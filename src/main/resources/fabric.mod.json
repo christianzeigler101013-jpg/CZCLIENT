@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "czclient",
+  "version": "${version}",
+  "name": "CZCLIENT",
+  "description": "CZCLIENT - an all-in-one Fabric client experience.",
+  "authors": ["CZCLIENT"],
+  "environment": "client",
+  "entrypoints": { "client": ["com.czclient.client.CZClient"] },
+  "mixins": ["czclient.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
