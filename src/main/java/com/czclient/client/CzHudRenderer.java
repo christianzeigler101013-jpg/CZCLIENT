@@ -19,7 +19,11 @@ public final class CzHudRenderer {
             key(ctx,client,"SPACE",bx+38,by+68,74,30,client.options.jumpKey.isPressed());
         }
     }
-    private static void key(DrawContext c,MinecraftClient m,String s,int x,int y,int w,int h,boolean p){ c.fill(x,y,x+w,y+h,p?0xFF8A5CFF:0xB81A1A22); c.drawBorder(x,y,w,h,0xFFBFA7FF); text(c,m,s,x+(w-m.textRenderer.getWidth(s))/2,y+10,0xFFFFFFFF); }
-    private static void box(DrawContext c,int x,int y,int w,int h){c.fill(x,y,x+w,y+h,0xB8101018);c.drawBorder(x,y,w,h,0xFF8A5CFF);}
+    private static void border(DrawContext c,int x,int y,int w,int h,int color){
+        c.fill(x,y,x+w,y+1,color); c.fill(x,y+h-1,x+w,y+h,color);
+        c.fill(x,y,x+1,y+h,color); c.fill(x+w-1,y,x+w,y+h,color);
+    }
+    private static void key(DrawContext c,MinecraftClient m,String s,int x,int y,int w,int h,boolean p){ c.fill(x,y,x+w,y+h,p?0xFF8A5CFF:0xB81A1A22); border(c,x,y,w,h,0xFFBFA7FF); text(c,m,s,x+(w-m.textRenderer.getWidth(s))/2,y+10,0xFFFFFFFF); }
+    private static void box(DrawContext c,int x,int y,int w,int h){c.fill(x,y,x+w,y+h,0xB8101018);border(c,x,y,w,h,0xFF8A5CFF);}
     private static void text(DrawContext c,MinecraftClient m,String s,int x,int y,int color){c.drawTextWithShadow(m.textRenderer,s,x,y,color);}
 }
